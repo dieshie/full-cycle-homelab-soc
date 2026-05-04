@@ -11,6 +11,6 @@ Three VMs in VirtualBox Internal Network, isolated from host:
 | Kali Linux | 192.168.190.133 | Attacker machine |
 
 All machines are in the same /24 subnet by design - this simplifies setup and lets me focus on SIEM detection rather than network complexity.
-![Network Topology]
+# Network Topology
 <img width="990" height="579" alt="image" src="https://github.com/user-attachments/assets/082a1d52-3ff0-4c11-9ffa-792ea3b1114d" />
 
