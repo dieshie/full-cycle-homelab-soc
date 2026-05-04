@@ -1,6 +1,6 @@
 # HomeLab for SOC & Detection Practice
 
-I built this lab to understand how attacks look in SIEM and practice detection engineering. No cloud, no automation — just manual setup to learn the fundamentals.
+I built this lab to understand how attacks look in SIEM and practice detection engineering. No cloud, no automation - just manual setup to learn the fundamentals.
 
 ## What's inside
 
@@ -12,7 +12,7 @@ Three VMs in VirtualBox Internal Network, isolated from host:
 | Client (Fedora) | 192.168.190.136 | Domain user workstation + Wazuh agent |
 | Kali Linux | 192.168.190.133 | Attacker machine |
 
-All machines are in the same /24 subnet by design — this simplifies setup and lets me focus on SIEM detection rather than network segmentation. For a production environment, the attacker would be placed in an external network behind a firewall.
+All machines are in the same /24 subnet by design - this simplifies setup and lets me focus on SIEM detection rather than network segmentation. For a production environment, the attacker would be placed in an external network behind a firewall.
 
 ### Network Topology
 
@@ -20,9 +20,9 @@ All machines are in the same /24 subnet by design — this simplifies setup and 
 
 ## Setup
 
-### FreeIPA — Linux Domain Controller
+### FreeIPA - Linux Domain Controller
 
-I chose FreeIPA because it's essentially Active Directory for Linux: centralized authentication (LDAP + Kerberos), single sign-on, and host-based access control — all open source. It provides the enterprise-grade authentication layer that generates meaningful logs for SIEM analysis.
+I chose FreeIPA because it's essentially Active Directory for Linux: centralized authentication (LDAP + Kerberos), single sign-on, and host-based access control - all open source. It provides the enterprise-grade authentication layer that generates meaningful logs for SIEM analysis.
 
 FreeIPA server installed on Fedora. Created two domain users (`diamond` and `cliff`) for testing:
 
@@ -32,9 +32,9 @@ Client joined to the domain, user `diamond@lab.local` can log in:
 
 ![Domain user login on client](https://github.com/user-attachments/assets/03084b33-7fa1-43d9-96eb-f32854d1082d)
 
-### Wazuh — SIEM & XDR
+### Wazuh - SIEM & XDR
 
-Wazuh deployed on the server (all-in-one: manager, indexer, dashboard). Below is the baseline state before any attacks — clean dashboard, no alerts:
+Wazuh deployed on the server (all-in-one: manager, indexer, dashboard). Below is the baseline state before any attacks - clean dashboard, no alerts:
 
 ![Wazuh baseline before attacks](https://github.com/user-attachments/assets/3ad55ae6-2345-48be-976d-622f8afc00ac)
 
@@ -54,7 +54,7 @@ Ran a dictionary attack against the client using Medusa with a custom wordlist. 
 
 ![Medusa brute force attack](https://github.com/user-attachments/assets/cb1c37bd-16a0-4514-9e97-a3f49506acda)
 
-**Detection result in Wazuh:** Rule **5720** — `sshd: Multiple authentication failures`. Knowing rule IDs is useful for quick filtering in investigations.
+**Detection result in Wazuh:** Rule **5720** - `sshd: Multiple authentication failures`. Knowing rule IDs is useful for quick filtering in investigations.
 
 ![Wazuh alert for multiple auth failures](https://github.com/user-attachments/assets/b8f07a15-4c55-4b3d-9738-18edfddd611b)
 
@@ -89,7 +89,7 @@ This correlation is valuable for incident response — you immediately know the 
 
 ### Successful Login Detection
 
-A single successful login generates a low-severity alert (Rule **5715** — `sshd: authentication success`). By itself, it's not suspicious:
+A single successful login generates a low-severity alert (Rule **5715** - `sshd: authentication success`). By itself, it's not suspicious:
 
 ![Successful login — low severity](https://github.com/user-attachments/assets/3a5442c2-3ffa-47db-a2e5-1f5cccb223f2)
 
