@@ -6,9 +6,11 @@ Three VMs in VirtualBox Internal Network, isolated from host:
 
 | Machine | IP | Role |
 |---------|-----|------|
-| Server (Fedora) | 192.168.190.10 | FreeIPA domain controller + Wazuh (server, indexer, dashboard) |
-| Client (Fedora) | 192.168.190.20 | Domain user workstation + Wazuh agent |
-| Kali Linux | 192.168.190.30 | Attacker machine |
+| Server (Fedora) | 192.168.190.137 | FreeIPA domain controller + Wazuh (server, indexer, dashboard) |
+| Client (Fedora) | 192.168.190.136 | Domain user workstation + Wazuh agent |
+| Kali Linux | 192.168.190.133 | Attacker machine |
 
 All machines are in the same /24 subnet by design - this simplifies setup and lets me focus on SIEM detection rather than network complexity.
+![Network Topology]
 <img width="990" height="579" alt="image" src="https://github.com/user-attachments/assets/082a1d52-3ff0-4c11-9ffa-792ea3b1114d" />
+
