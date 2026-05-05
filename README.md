@@ -4,7 +4,7 @@ I built this lab to understand how attacks look in SIEM and practice detection e
 
 ## What's inside
 
-Three VMs in VirtualBox Internal Network, isolated from host:
+Three VMs in VMware Internal Network, isolated from host:
 
 | Machine | IP | Role |
 |---------|-----|------|
